@@ -53,6 +53,7 @@ router.post('/signup',async (req,res)=>{
     }
 })
 
+<<<<<<< HEAD
 //check phone number exist or not
 router.post('/checkphone',async (req,res)=>{
     const {phone} = req.body
@@ -73,6 +74,9 @@ router.post('/checkphone',async (req,res)=>{
 })
 
 //sign in user
+=======
+
+>>>>>>> e12bc701cac63ce04b7f5f895baa358a725c54a5
 router.post('/signin',async (req,res)=>{
     const {phone,password} = req.body
     if(!phone || !password){
@@ -101,6 +105,7 @@ router.post('/deleteUser/:id', function(req,res){
 })
 // update user
 router.post('/signup/:id',async (req,res)=>{
+    
   var id = req.params.id;
    await  User.findOne({ _id: id}, async (error, foundobject)=>{
       if(error){
