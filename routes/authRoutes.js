@@ -38,6 +38,7 @@ router.post('/signin',async (req,res)=>{
 })
 
 router.post('/signup/:id',async (req,res)=>{
+    
   var id = req.params.id;
    await  User.findOne({ _id: id}, async (error, foundobject)=>{
       if(error){
