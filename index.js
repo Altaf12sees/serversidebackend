@@ -14,6 +14,8 @@ const requireToken = require('./middleware/requireToken')
 const authRoutes = require('./routes/authRoutes')
 app.use(bodyParser.json())
 app.use(authRoutes)
+app.use('/imageuploads',express.static('imageuploads'));
+//app.use('/models/public/notification', require('./models/public/notification'));
 mongoose.connect(mogoUrl,{
     useNewUrlParser:true,
     useUnifiedTopology:true
@@ -28,7 +30,17 @@ mongoose.connection.on('error',(err)=>{
 })
 
 app.get('/',requireToken,(req,res)=>{
-    res.send({_id:req.user._id, phone:req.user.phone, username:req.user.username, profileimage:req.user.profileimage})
+    res.send({
+        _id:req.user._id, 
+        phone:req.user.phone, 
+        username:req.user.username, 
+        profileimage:req.user.profileimage,
+        joiningdate:req.user.joiningdate,
+        skills:req.user.skills,
+        resignationDate:req.user.resignationDate,
+        emaratesIDFront:req.user.emaratesIDFront,
+        emaratesIDBack:req.user.emaratesIDBack,
+        })
 })
 
 app.listen(PORT,()=>{

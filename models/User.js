@@ -1,23 +1,16 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
 const userSchema = new mongoose.Schema({
-    phone:{
-        type:String,
-        unique:true,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true
-    },
-    username:{
-        type: String,
-        required:false
-    },
-    profileimage:{
-        type:String,
-        required:false
-    }
+    phone:{type:String,unique:true,required:true},
+    password:{type:String,required:true},
+    username:{type: String,required:false},
+    profileimage:{type:String,required:false},
+    joiningdate:{type: String,required:false},
+    skills:{type: Array,required: false},
+    resignationDate:{type: String,required: false},
+    emaratesIDFront:{type:String,required:false},
+    emaratesIDBack:{type:String,required:false},
+   // emaratesID:{type: Array, required:false},
 })
 userSchema.pre('save',function(next){
     const user = this;
